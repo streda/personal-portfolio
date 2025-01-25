@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { io } from 'socket.io-client';
 
 // Connect to the Socket.IO server
-const socket = io('http://localhost:5000'); // Replace with your backend's URL in production
+// const socket = io('http://localhost:5000'); // Replace with your backend's URL in production
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+const socket = io(backendUrl);
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -51,7 +53,7 @@ const Contact: React.FC = () => {
     setStatus(null); // Reset status message
 
     try {
-      const response = await fetch('https://your-backend-api.com/api/contact', {
+      const response = await fetch(`${backendUrl}/api/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -181,143 +183,3 @@ const Contact: React.FC = () => {
 };
 
 export default Contact;
-
-// import React, { useState } from 'react';
-
-// const Contact: React.FC = () => {
-//   const [formData, setFormData] = useState({
-//     name: '',
-//     email: '',
-//     message: ''
-//   });
-
-//   const [submitted, setSubmitted] = useState(false);
-
-//   const handleInputChange = (
-//     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-//   ) => {
-//     const { name, value } = e.target;
-//     setFormData({ ...formData, [name]: value });
-//   };
-
-//   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-//     e.preventDefault();
-
-//     try {
-//       // Send form data to the backend
-//       const response = await fetch('https://your-backend-api.com/api/contact', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(formData)
-//       });
-
-//       if (response.ok) {
-//         // Simulate form submission success
-//         setSubmitted(true);
-//         // Reset form after submission
-//         setFormData({ name: '', email: '', message: '' });
-//       } else {
-//         console.error('Failed to send the message');
-//         // Handle error appropriately (e.g., show an error message)
-//       }
-//     } catch (error) {
-//       console.error('An error occurred:', error);
-//       // Handle network or server errors
-//     }
-//   };
-
-//   // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-//   //   e.preventDefault();
-//   //   console.log('Form submitted:', formData);
-
-//   //   // Simulate form submission success
-//   //   setSubmitted(true);
-
-//   //   // Reset form after submission
-//   //   setFormData({ name: '', email: '', message: '' });
-//   // };
-
-//   return (
-//     <div className="flex justify-center items-center min-h-screen bg-gray-100">
-//       <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-//         <h1 className="text-2xl font-semibold mb-6 text-gray-800">
-//           Contact Me
-//         </h1>
-//         {submitted ? (
-//           <div className="text-center">
-//             <p className="text-green-600 font-medium">
-//               Thank you for your message! I&apos;ll get back to you soon.
-//             </p>
-//           </div>
-//         ) : (
-//           <form onSubmit={handleSubmit} className="space-y-6">
-//             <div>
-//               <label
-//                 htmlFor="name"
-//                 className="block text-sm font-medium text-gray-700"
-//               >
-//                 Name
-//               </label>
-//               <input
-//                 type="text"
-//                 id="name"
-//                 name="name"
-//                 value={formData.name}
-//                 onChange={handleInputChange}
-//                 required
-//                 placeholder="Enter your name"
-//                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-//               />
-//             </div>
-//             <div>
-//               <label
-//                 htmlFor="email"
-//                 className="block text-sm font-medium text-gray-700"
-//               >
-//                 Email
-//               </label>
-//               <input
-//                 type="email"
-//                 id="email"
-//                 name="email"
-//                 value={formData.email}
-//                 onChange={handleInputChange}
-//                 required
-//                 placeholder="Enter your email"
-//                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-//               />
-//             </div>
-//             <div>
-//               <label
-//                 htmlFor="message"
-//                 className="block text-sm font-medium text-gray-700"
-//               >
-//                 Message
-//               </label>
-//               <textarea
-//                 id="message"
-//                 name="message"
-//                 value={formData.message}
-//                 onChange={handleInputChange}
-//                 required
-//                 placeholder="Write your message here"
-//                 rows={4}
-//                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
-//               ></textarea>
-//             </div>
-//             <button
-//               type="submit"
-//               className="w-full bg-blue-500 text-white font-semibold py-2 px-4 rounded-md shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-//             >
-//               Send Message
-//             </button>
-//           </form>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Contact;
