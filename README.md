@@ -68,3 +68,31 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### GitHub Actions Workflow:
+
+name: Build and Deploy
+
+on:
+push:
+branches: - main
+
+jobs:
+build:
+runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Run TypeScript checks
+        run: npm run build
+
+deploy:
+runs-on: ubuntu-latest
+needs: build
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to Vercel
+        run: npx vercel --prod

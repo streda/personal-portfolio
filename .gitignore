@@ -5,19 +5,53 @@
 /.pnp
 .pnp.js
 
+# environment variables
+.env
+.env.local
+.env.*.local
+
 # testing
 /coverage
 
-# production
+# build outputs
 /build
+/dist
 
 # misc
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+Thumbs.db
+.vscode/
+.idea/
+*.log
+*.lock
+*.bak
 
+# OS-specific files
+*.swp
+*.swo
+
+# npm / yarn debug files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# IDE or editor files
+*.iml
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+
+# Mac system files
+.DS_Store
+._*
+
+# Images or uploads (if generated dynamically)
+/uploads
+/images/tmp
+
+# Parcel cache (if used)
+/.cache
+.parcel-cache
+
+# Build tools (optional)
+/out/
