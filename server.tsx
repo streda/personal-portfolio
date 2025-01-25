@@ -1,4 +1,5 @@
 //~ Setting Up a Real-Time App with Render
+import path from 'path';
 import express from 'express';
 import http from 'http';
 import { Server } from 'socket.io';
@@ -38,6 +39,13 @@ const io = new Server(server, {
 });
 
 app.use(bodyParser.json());
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 // Handle WebSocket connections
 io.on('connection', (socket) => {
