@@ -30,6 +30,8 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsLoading(true);
+    setStatus(null); // Reset status message
     if (!formData.name || !formData.email || !formData.message) {
       setStatus('All fields are required.');
       setIsLoading(false);
@@ -47,9 +49,6 @@ const Contact: React.FC = () => {
       setIsLoading(false);
       return;
     }
-
-    setIsLoading(true);
-    setStatus(null); // Reset status message
 
     try {
       const response = await fetch(
