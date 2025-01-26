@@ -82,7 +82,7 @@ const Contact: React.FC = () => {
   useEffect(() => {
     // Listen for success or error messages from the server
     socket.on('form_success', (message: string) => {
-      setStatus(message);
+      setStatus(message); // Ensure this doesn't overwrite fetch logic
       setSubmitted(true);
       setFormData({ name: '', email: '', message: '' }); // Reset the form
     });
