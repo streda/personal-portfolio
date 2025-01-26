@@ -8,6 +8,7 @@ const backendUrl = process.env.REACT_APP_BACKEND_URL;
 const socket = io(`${backendUrl}`, {
   transports: ['websocket']
 });
+
 // const socket = io('https://personal-portfolio-1ode.onrender.com');
 
 const Contact: React.FC = () => {
@@ -56,16 +57,13 @@ const Contact: React.FC = () => {
     }
 
     try {
-      const response = await fetch(
-        'https://personal-portfolio-1ode.onrender.com',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(formData)
-        }
-      );
+      const response = await fetch(`${backendUrl}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
 
       if (response.ok) {
         setStatus('Message sent successfully!');
