@@ -133,6 +133,19 @@ io.on('connection', (socket) => {
   // Handle disconnections
   socket.on('disconnect', () => {
     logger.info(`A user disconnected: ${socket.id}`);
+  });
+});
+
+// Serve React app for all other routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+// Start the server
+const PORT = process.env.PORT || 5000;
+server.listen(PORT, () => {
+  logger.info(`Server is running on port ${PORT}`);
+});
 
 // //~ Setting Up a Real-Time App with Render
 // import path from 'path';
@@ -212,7 +225,6 @@ io.on('connection', (socket) => {
 //         }
 //       });
 
-      
 //       const mailOptions = {
 //         from: email,
 //         to: process.env.EMAIL_RECEIVER, // Use an environment variable for receiver
