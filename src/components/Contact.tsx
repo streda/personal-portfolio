@@ -9,6 +9,8 @@ const socket = io(`${backendUrl}`, {
   transports: ['websocket']
 });
 
+console.log('Backend URL:', backendUrl);
+
 // const socket = io('https://personal-portfolio-1ode.onrender.com');
 
 const Contact: React.FC = () => {

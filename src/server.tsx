@@ -44,6 +44,12 @@ const io = new Server(server, {
   }
 });
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', process.env.CLIENT_ORIGIN || '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+  next();
+});
+
 app.use(bodyParser.json());
 
 // Serve static files from the React app
@@ -51,6 +57,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 // Add the POST /api/contact route
 app.post('/api/contact', async (req, res) => {
+  console.log('API /api/contact accessed');
   const { name, email, message } = req.body;
 
   // Validate data
