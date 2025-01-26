@@ -3,7 +3,12 @@ import { io } from 'socket.io-client';
 
 // Connect to the Socket.IO server
 // const socket = io('http://localhost:5000'); // Replace with your backend's URL in production
-const socket = io('https://personal-portfolio-1ode.onrender.com');
+const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
+const socket = io(`${backendUrl}`, {
+  transports: ['websocket']
+});
+// const socket = io('https://personal-portfolio-1ode.onrender.com');
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
