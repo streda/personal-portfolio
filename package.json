@@ -23,7 +23,6 @@
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1",
     "styled-components": "^6.1.11",
-    "ts-node": "^10.9.2",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",
     "winston": "^3.17.0"
@@ -35,8 +34,10 @@
     "strict": true,
     "esModuleInterop": true
   },
-  "include": ["server.tsx", "src/**/*"],
-
+  "include": [
+    "server.tsx",
+    "src/**/*"
+  ],
   "scripts": {
     "start": "ts-node ./server.tsx",
     "build": "react-scripts build",
@@ -80,7 +81,8 @@
     "nodemon": "^3.1.9",
     "postcss": "^8.5.1",
     "prettier": "^2.8.8",
-    "tailwindcss": "^3.4.17"
+    "tailwindcss": "^3.4.17",
+    "ts-node": "^10.9.2"
   },
   "engines": {
     "node": "18.x"

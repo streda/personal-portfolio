@@ -11,6 +11,10 @@ import winston from 'winston';
 // Load environment variables
 dotenv.config();
 
+// Debugging: Check if environment variables are loaded correctly
+console.log('EMAIL_USER:', process.env.EMAIL_USER); // Temporary, for debugging only
+console.log('EMAIL_PASS:', process.env.EMAIL_PASS); // Temporary, for debugging only
+console.log('EMAIL_RECEIVER:', process.env.EMAIL_RECEIVER); // Temporary, for debugging only
 // Set up Winston logger
 // Winston logger setup should be placed at the top of the file so it is globally accessible throughout the server. This allows to use the logger for logging messages, errors, or other information wherever necessary in the code.
 const logger = winston.createLogger({
@@ -101,51 +105,3 @@ const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   logger.info(`Server is running on port ${PORT}`); // Log server start
 });
-// const express = require('express');
-// const bodyParser = require('body-parser');
-// const nodemailer = require('nodemailer');
-
-// const app = express();
-// app.use(bodyParser.json());
-
-// // Handle form submissions
-// app.post('/api/contact', async (req, res) => {
-//   const { name, email, message } = req.body;
-
-//   if (!name || !email || !message) {
-//     return res.status(400).json({ error: 'All fields are required.' });
-//   }
-
-//   try {
-//     // Example: Send email (Nodemailer)
-//     const transporter = nodemailer.createTransport({
-//       service: 'gmail',
-//       auth: {
-//         user: 'your-email@gmail.com',
-//         pass: 'your-email-password'
-//       }
-//     });
-
-//     const mailOptions = {
-//       from: email,
-//       to: 'your-email@gmail.com',
-//       subject: `New Contact Form Submission from ${name}`,
-//       text: `Message: ${message}\n\nFrom: ${name} (${email})`
-//     };
-
-//     await transporter.sendMail(mailOptions);
-
-//     // Example: Log to console or save to a database
-//     console.log(`Message received from ${name}: ${message}`);
-
-//     res.status(200).json({ message: 'Message sent successfully!' });
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: 'Failed to send message.' });
-//   }
-// });
-
-// // Start server
-// app.listen(5000, () => {
-//   console.log('Server is running on port 5000');
-// });
