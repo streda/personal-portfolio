@@ -2,35 +2,46 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <!-- <link rel="icon" href="%PUBLIC_URL%/favicon.ico" /> -->
+
+    <!-- Primary favicon for most browsers -->
+    <link rel="icon" type="image/x-icon" href="%PUBLIC_URL%/favicon.ico" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
       content="Web site created using create-react-app"
     />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-      <!-- List lines -->
-      <rect x="10" y="12" width="30" height="4" rx="1" fill="#000" />
-      <rect x="10" y="28" width="30" height="4" rx="1" fill="#000" />
-      <rect x="10" y="44" width="30" height="4" rx="1" fill="#000" />
-      <!-- Checkmark -->
-      <polyline
-        points="45,20 54,29 45,38"
-        fill="none"
-        stroke="#000"
-        stroke-width="4"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      />
-    </svg>
+
+    <!-- PNG favicons (32x32, 16x16) -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="%PUBLIC_URL%/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="%PUBLIC_URL%/favicon-16x16.png"
+    />
+    <!-- Apple Touch Icon for iOS -->
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="%PUBLIC_URL%/apple-touch-icon.png"
+    />
+
+    <!-- Manifest for Progressive Web App (if you want PWA features) -->
+    <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest" />
 
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> -->
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
