@@ -6,9 +6,9 @@ const projects = [
     title: 'Portfolio Website',
     description:
       'My personal portfolio website showcasing my skills and projects.',
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Render'],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Digital Ocean'],
     githubLink: 'https://github.com/your-username/portfolio-website',
-    liveDemo: 'https://portfolio-demo.com'
+    liveDemo: 'https://stredaweb.dev/'
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const projects = [
       'Stripe'
     ],
     githubLink: 'https://github.com/your-username/restaurant-app',
-    liveDemo: 'https://restaurant-app-demo.com'
+    liveDemo: 'https://truefood.rest'
   },
 
   {
@@ -34,7 +34,7 @@ const projects = [
       'A digital tool that allows users to create and manage lists of tasks they need to complete, such as marking items as finished and active.',
     technologies: ['React', 'Redux', 'JavaScript', 'Stripe'],
     githubLink: 'https://github.com/your-username/ecommerce-platform',
-    liveDemo: 'https://ecommerce-platform-demo.com'
+    liveDemo: 'https://mytodolistapps.com'
   }
 ];
 
